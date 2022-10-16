@@ -1,0 +1,9 @@
+
+C
+java:S1604 "(Make this anonymous inner class a lambda(¡“ßÊûÿÿÿÿ
+v
+java:S1450"[Remove the "answerButton" field and declare it as a local variable in the relevant methods.(Àò¡žýÿÿÿÿ
+w
+java:S1450"\Remove the "answerConfirm" field and declare it as a local variable in the relevant methods.(‚¨Ÿ”ùÿÿÿÿ
+L
+java:S1068"1Remove this unused "answerConfirm" private field.(‚¨Ÿ”ùÿÿÿÿ

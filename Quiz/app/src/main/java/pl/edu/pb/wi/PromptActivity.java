@@ -1,5 +1,6 @@
 package pl.edu.pb.wi;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,7 +13,13 @@ public class PromptActivity extends AppCompatActivity {
     private TextView answerConfirm;
     private TextView answerTextView;
     private boolean correctAnswer;
+    public static final String KEY_EXTRA_ANSWER_SHOWN = "pb.edu.pl.wi.quiz.answerShown";
 
+    private void setAnswerShownResult(boolean answerWasShown){
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(KEY_EXTRA_ANSWER_SHOWN, answerWasShown);
+        setResult(RESULT_OK, resultIntent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +34,9 @@ public class PromptActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int answer = correctAnswer ? R.string.button_true : R.string.button_false;
                 answerTextView.setText(answer);
+                setAnswerShownResult(true);
             }
         });
+
     }
 }

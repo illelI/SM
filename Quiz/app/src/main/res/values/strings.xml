@@ -3,6 +3,7 @@
     <string name="button_true">Prawda</string>
     <string name="button_answer">Pokaż odpowiedź</string>
     <string name="q_answer">Czy chcesz zobaczyć odpowiedź?</string>
+    <string name="answer_was_shown">Odpowiedź została już wyświetlona</string>
     <string name="button_false">Fałsz</string>
     <string name="button_next">Następne</string>
     <string name="button_prompt">Pokaż odpowiedź</string>
