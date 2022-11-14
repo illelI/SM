@@ -41,7 +41,6 @@ public class TaskListFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
-            //menu handled
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_task_menu,menu);
 
@@ -59,7 +58,7 @@ public class TaskListFragment extends Fragment {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){   //show task details
+    public boolean onOptionsItemSelected(MenuItem item){   
         switch (item.getItemId()){
             case R.id.new_task:
                 Task task = new Task();
@@ -70,7 +69,7 @@ public class TaskListFragment extends Fragment {
                 return true;
             case R.id.show_subtitle:
                 subtitleVisible = !subtitleVisible;
-                getActivity().invalidateOptionsMenu(); //rekonstrukcja przyciskow akcji menu
+                getActivity().invalidateOptionsMenu();
                 updateSubtitle();
                 return true;
             default:
@@ -88,7 +87,6 @@ public class TaskListFragment extends Fragment {
         TaskStorage taskStorage = TaskStorage.getInstance();
         List<Task>  tasks = taskStorage.getTasks();
 
-        //TaskAdapter adapter = null;
         if(adapter == null){
             adapter = new TaskAdapter(tasks);
             recyclerView.setAdapter(adapter);
@@ -96,10 +94,10 @@ public class TaskListFragment extends Fragment {
         else
             adapter.notifyDataSetChanged();
 
-       updateSubtitle(); //it should be added but doesnt work
+       updateSubtitle();
     }
 
-    public void updateSubtitle(){        //display tasks which are not done yet(number)
+    public void updateSubtitle(){
         TaskStorage taskStorage = TaskStorage.getInstance();
         List<Task> tasks = taskStorage.getTasks();
         int todoTasksCount = 0;
@@ -129,24 +127,20 @@ public class TaskListFragment extends Fragment {
             checkboxView = itemView.findViewById(R.id.task_item_checkbox);
         }
     
-        public void bind(Task task){   //dispaly task on the list view
+        public void bind(Task task){
             this.task = task;
             nameTextView.setText(task.getName());
             dateTextView.setText(task.getDate().toString());
-            //????????????????????????????????
             if (task.getCategory().equals(Category.DOM))
                 iconImageView.setImageResource(R.drawable.ic_home);
             else
                 iconImageView.setImageResource(R.drawable.ic_studies);
             if (checkboxView != null) {
                 checkboxView.setChecked(task.isDone());
-//                checkboxView.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                    task.setDone(isChecked);
-//                });
             }
-            if(checkboxView.isChecked())  //if is checked then strike it
+            if(checkboxView.isChecked())
                 nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            else {                        //else unstrike it cuz its not done
+            else {
                 nameTextView.setPaintFlags( nameTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
                 nameTextView.setText(task.getName());
             }

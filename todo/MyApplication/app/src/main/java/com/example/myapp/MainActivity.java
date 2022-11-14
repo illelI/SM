@@ -14,7 +14,6 @@ public class MainActivity extends SingleFragmentActivity {
         super.onCreate(savedInstanceState);
 
     }
-    //@Override
     protected Fragment createFragment() {
         UUID taskId = (UUID) getIntent().getSerializableExtra(TaskListFragment.KEY_EXTRA_TASK_ID);
         return TaskFragment.newInstance(taskId);

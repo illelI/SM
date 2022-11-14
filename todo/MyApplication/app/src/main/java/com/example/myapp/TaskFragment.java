@@ -33,7 +33,6 @@ public class TaskFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.fragment_task);
 
         UUID taskId = (UUID) getArguments().getSerializable(ARG_TASK_ID);
         task = TaskStorage.getInstance().getTask(taskId);
@@ -53,7 +52,6 @@ public class TaskFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
-        //Task task = new Task();
 
         EditText nameField;
         CheckBox doneCheckBox = null;
@@ -62,7 +60,6 @@ public class TaskFragment extends Fragment {
         dateField = view.findViewById(R.id.task_date);
         doneCheckBox = view.findViewById(R.id.task_done);
         categorySpinner = view.findViewById(R.id.task_category);
-                    //set category for task in drop down
         categorySpinner.setAdapter(new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, Category.values()));
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -92,10 +89,6 @@ public class TaskFragment extends Fragment {
             }
         });
         nameField.setText(task.getName());
-/*        if(dateButton != null){
-            dateButton.setText(task.getDate().toString());
-            dateButton.setEnabled(false);
-        }*/
         if(doneCheckBox != null){
             doneCheckBox.setChecked(task.isDone());
             doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked) ->{
